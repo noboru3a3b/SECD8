@@ -1,0 +1,29 @@
+$ rlwrap ./micro_Scheme3.lisp
+>>> (reverse '(1 2 3 4 5 6 7 8 9 10))
+(10 9 8 7 6 5 4 3 2 1)
+
+
+;; for exploration
+(trace-print)
+-> Toggle *trace-print-flag*
+
+(macro-print)
+-> Toggle *macro-print-flag*
+
+(code <compiled code>)
+-> Inject compiled code, directly
+
+
+;; for reliability test
+;; in file "micro_Scheme2.lisp"
+(repl "mlib2.scm"
+;      "test-case.scm"  ; <- uncomment this line
+)
+
+
+;; in file "test-case.scm" 
+(test-start)
+-> start test-case
+
+(test-end)
+-> end test-case, and print test statistics

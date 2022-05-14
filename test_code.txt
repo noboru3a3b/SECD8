@@ -1,0 +1,83 @@
+test code:
+((lambda (x) (if x 10)) false)
+
+
+<current>
+>>> ((lambda (x) (if x 10)) false)
+Compile => (LDG FALSE ARGS 1 LDF
+                (LD (0 . 0) SELR (LDC 10 RTN) (LDC *UNDEF* RTN)) APP STOP)
+--------------------
+C-> LDG
+    FALSE
+--------------------
+S-> FALSE
+C-> ARGS
+    1
+--------------------
+C-> LDF
+    (LD (0 . 0) SELR (LDC 10 RTN) (LDC *UNDEF* RTN))
+--------------------
+S-> (CLOSURE (LD (0 . 0) SELR (LDC 10 RTN) (LDC *UNDEF* RTN)) NIL)
+    (FALSE)
+C-> APP
+--------------------
+E-> ((FALSE))
+C-> LD
+    (0 . 0)
+--------------------
+S-> FALSE
+C-> SELR
+    (LDC 10 RTN)
+    (LDC *UNDEF* RTN)
+--------------------
+C-> LDC
+    *UNDEF*
+--------------------
+C-> RTN
+--------------------
+S-> *UNDEF*
+C-> STOP
+--------------------
+Value => *UNDEF*
+
+
+<original>
+>>> ((lambda (x) (if x 10)) false)
+Compile => (LDG FALSE ARGS 1 LDF
+                (LD (0 . 0) SELR (LDC 10 RTN) (LDC *UNDEF* JOIN)) APP STOP)
+--------------------
+C-> LDG
+    FALSE
+--------------------
+S-> FALSE
+C-> ARGS
+    1
+--------------------
+C-> LDF
+    (LD (0 . 0) SELR (LDC 10 RTN) (LDC *UNDEF* JOIN))
+--------------------
+S-> (CLOSURE (LD (0 . 0) SELR (LDC 10 RTN) (LDC *UNDEF* JOIN)) NIL)
+    (FALSE)
+C-> APP
+--------------------
+E-> ((FALSE))
+C-> LD
+    (0 . 0)
+--------------------
+S-> FALSE
+C-> SELR
+    (LDC 10 RTN)
+    (LDC *UNDEF* JOIN)
+--------------------
+C-> LDC
+    *UNDEF*
+--------------------
+C-> JOIN
+--------------------
+C-> NIL
+    NIL
+--------------------
+unhandled SIMPLE-ERROR in thread #<SB-THREAD:THREAD "initial thread" RUNNING
+                                   {AA93971}>:
+  unknown opcode
+
