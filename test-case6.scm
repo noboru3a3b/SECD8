@@ -697,6 +697,6 @@ b
 
 
 ;;; system call
-(system "/bin/ls" "-la" nil)
+;(system "/bin/ls" "-la" nil)
 ;; for clisp
 ;(system "ls -la" )

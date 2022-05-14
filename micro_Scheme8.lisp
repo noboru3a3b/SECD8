@@ -16,6 +16,9 @@
 ;; for clisp
 ;; USAGE: clisp micro_Scheme8.lisp
 ;; or     clisp micro_Scheme8.fas
+;; for Windows
+;; sbcl --script micro_Scheme8.lisp
+;;
 
 ;; 大域変数
 (defvar *macro-print-flag* nil)	   ; add macro-print switch okada-n
